@@ -18066,6 +18066,7 @@ threads:
     scope_separator: ','
     authorization_url: https://threads.net/oauth/authorize
     token_url: https://graph.threads.net/oauth/access_token
+    refresh_url: https://graph.threads.net/refresh_access_token
     proxy:
         base_url: https://graph.threads.com
     docs: https://nango.dev/docs/api-integrations/threads
