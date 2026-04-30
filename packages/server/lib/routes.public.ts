@@ -61,6 +61,7 @@ import { postSyncVariant } from './controllers/sync/postSyncVariant.js';
 import { postPublicTrigger } from './controllers/sync/postTrigger.js';
 import { putSyncConnectionFrequency } from './controllers/sync/putSyncConnectionFrequency.js';
 import { allPublicV1 } from './controllers/v1/getV1.js';
+import { getWebhook } from './controllers/webhook/environmentUuid/getWebhook.js';
 import { postWebhook } from './controllers/webhook/environmentUuid/postWebhook.js';
 import { envs } from './env.js';
 import { acceptLanguageMiddleware } from './middleware/accept-language.middleware.js';
@@ -85,6 +86,7 @@ const connectSessionOrPublicAuth: RequestHandler[] = [authMiddleware.connectSess
 const remoteFunctionAuth: RequestHandler[] = [
     ...apiAuth,
     (_req, res, next) => {
+        // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
         const plan = res.locals['plan'] as DBPlan | null | undefined;
 
         if (flagHasPlan && !plan?.remote_functions) {
@@ -164,7 +166,7 @@ publicAPI.route('/auth/bill/:providerConfigKey').post(connectSessionOrPublicAuth
 publicAPI.route('/auth/signature/:providerConfigKey').post(connectSessionOrPublicAuth, postPublicSignatureAuthorization);
 publicAPI.route('/auth/unauthenticated/:providerConfigKey').post(connectSessionOrPublicAuth, postPublicUnauthenticated);
 
-publicAPI.route('/webhook/:environmentUuid/:providerConfigKey').post(webhookIngressRateLimit, postWebhook);
+publicAPI.route('/webhook/:environmentUuid/:providerConfigKey').get(getWebhook).post(webhookIngressRateLimit, postWebhook);
 
 publicAPI.use('/providers', jsonContentTypeMiddleware);
 publicAPI.route('/providers').get(connectSessionOrApiAuth, acceptLanguageMiddleware, getPublicProviders);

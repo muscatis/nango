@@ -5049,6 +5049,19 @@ stripe-app:
     - read_only
     - read_write
 
+# source: https://developers.facebook.com/docs/threads/get-started/get-access-tokens-and-permissions/
+threads:
+    - threads_basic
+    - threads_content_publish
+    - threads_read_replies
+    - threads_manage_replies
+    - threads_manage_insights
+    - threads_delete
+    - threads_keyword_search
+    - threads_location_tagging
+    - threads_manage_mentions
+    - threads_profile_discovery
+
 # source: https://developers.tiktok.com/doc/tiktok-api-scopes/
 tiktok-accounts:
     - local.product.manage

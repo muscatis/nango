@@ -18070,6 +18070,8 @@ threads:
         base_url: https://graph.threads.com
     docs: https://nango.dev/docs/api-integrations/threads
     setup_guide_url: https://nango.dev/docs/api-integrations/threads/how-to-register-your-own-threads-api-oauth-app
+    webhook_routing_script: threadsWebhookRouting
+    webhook_user_defined_secret: true
 
 thrivecart-api-key:
     display_name: ThriveCart (API Key)

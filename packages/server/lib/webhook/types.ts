@@ -375,3 +375,25 @@ export interface FathomWebhookResponse {
     action_items: ActionItem[] | null;
     crm_matches?: CRMMatches;
 }
+
+export interface ThreadsDeletionPayload {
+    user_id: string;
+    algorithm?: string;
+    issued_at?: number;
+}
+
+export interface ThreadsWebhookChange {
+    field: string;
+    value: Record<string, any>;
+}
+
+export interface ThreadsWebhookEntry {
+    id: string;
+    time: number;
+    changes: ThreadsWebhookChange[];
+}
+
+export interface ThreadsWebhookPayload {
+    object: string;
+    entry: ThreadsWebhookEntry[];
+}
