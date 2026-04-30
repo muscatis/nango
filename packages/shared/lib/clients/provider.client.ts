@@ -153,24 +153,24 @@ class ProviderClient {
 
         switch (config.provider) {
             case 'bullhorn':
-                return this.refreshBullhornSession(provider.token_url as string, credentials.refresh_token, config.oauth_client_id, config.oauth_client_secret);
+                return this.refreshBullhornSession(provider.token_url as string, credentials.refresh_token!, config.oauth_client_id, config.oauth_client_secret);
             case 'braintree':
             case 'braintree-sandbox':
-                return this.refreshBraintreeToken(credentials.refresh_token, config.oauth_client_id, config.oauth_client_secret);
+                return this.refreshBraintreeToken(credentials.refresh_token!, config.oauth_client_id, config.oauth_client_secret);
             case 'coros':
             case 'coros-sandbox':
                 return this.refreshCorosToken(
                     provider.refresh_url as string,
                     credentials.access_token,
-                    credentials.refresh_token,
+                    credentials.refresh_token!,
                     config.oauth_client_id,
                     config.oauth_client_secret
                 );
             case 'figma':
             case 'figjam':
-                return this.refreshFigmaToken(provider.refresh_url as string, credentials.refresh_token, config.oauth_client_id, config.oauth_client_secret);
+                return this.refreshFigmaToken(provider.refresh_url as string, credentials.refresh_token!, config.oauth_client_id, config.oauth_client_secret);
             case 'jobber':
-                return this.refreshJobberToken(provider.token_url as string, credentials.refresh_token, config.oauth_client_id, config.oauth_client_secret);
+                return this.refreshJobberToken(provider.token_url as string, credentials.refresh_token!, config.oauth_client_id, config.oauth_client_secret);
             case 'facebook':
                 return this.refreshFacebookToken(provider.token_url as string, credentials.access_token, config.oauth_client_id, config.oauth_client_secret);
             case 'instagram':
@@ -181,7 +181,7 @@ class ProviderClient {
             case 'sharepoint-online':
                 return this.refreshSharepointToken(
                     provider.token_url as string,
-                    credentials.refresh_token,
+                    credentials.refresh_token!,
                     config.oauth_client_id,
                     config.oauth_client_secret,
                     connection.connection_config
@@ -213,23 +213,23 @@ class ProviderClient {
                 );
             case 'stripe-app':
             case 'stripe-app-sandbox':
-                return this.refreshStripeAppToken(provider.token_url as string, credentials.refresh_token, config.oauth_client_secret);
+                return this.refreshStripeAppToken(provider.token_url as string, credentials.refresh_token!, config.oauth_client_secret);
             case 'workday-oauth':
                 return this.refreshWorkdayAccessToken(
                     interpolatedTokenUrl.href,
-                    credentials.refresh_token,
+                    credentials.refresh_token!,
                     config.oauth_client_id,
                     config.oauth_client_secret,
                     connection.connection_config
                 );
             case 'fanvue':
-                return this.refreshFanvueToken(interpolatedTokenUrl.href, credentials.refresh_token, config.oauth_client_id, config.oauth_client_secret);
+                return this.refreshFanvueToken(interpolatedTokenUrl.href, credentials.refresh_token!, config.oauth_client_id, config.oauth_client_secret);
             case 'mercury':
-                return this.refreshMercuryToken(interpolatedTokenUrl.href, credentials.refresh_token);
+                return this.refreshMercuryToken(interpolatedTokenUrl.href, credentials.refresh_token!);
             case 'clover':
-                return this.refreshCloverToken(interpolatedRefreshUrl!.href, credentials.refresh_token, config.oauth_client_id);
+                return this.refreshCloverToken(interpolatedRefreshUrl!.href, credentials.refresh_token!, config.oauth_client_id);
             case 'heygen':
-                return this.refreshHeyGenToken(provider.refresh_url as string, credentials.refresh_token, config.oauth_client_id);
+                return this.refreshHeyGenToken(provider.refresh_url as string, credentials.refresh_token!, config.oauth_client_id);
             default:
                 throw new NangoError('unknown_provider_client');
         }
