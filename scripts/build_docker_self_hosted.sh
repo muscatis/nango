@@ -19,7 +19,7 @@ fi
 cd "$(dirname "$0")"
 
 echo ""
-echo -e "Building self-hosted nangohq/nango-server:hosted-$GIT_HASH"
+echo -e "Building self-hosted chumang/nango-self-hosted:$GIT_HASH"
 
 VERSION=$(node -p "require('../package.json').version")
 
@@ -28,18 +28,20 @@ docker buildx build \
   --build-arg BASE_IMAGE_HASH="$GIT_HASH" \
   --cache-from type=gha \
   --cache-to type=gha,mode=max \
-  -t nangohq/nango-server:hosted \
-  -t "nangohq/nango-server:hosted-$GIT_HASH" \
-  -t "nangohq/nango-server:hosted-$VERSION" \
+  -t chumang/nango-self-hosted \
+  -t "chumang/nango-self-hosted:$GIT_HASH" \
+  -t "chumang/nango-self-hosted:$VERSION" \
+  -t "chumang/nango-self-hosted:latest" \
   --file ../Dockerfile.self_hosted \
   --output=type=docker \
   ../
 
 if [ $PUSH ]; then
   echo "Pushing"
-  docker push nangohq/nango-server:hosted
-  docker push "nangohq/nango-server:hosted-$GIT_HASH"
-  docker push "nangohq/nango-server:hosted-$VERSION"
+  docker push chumang/nango-self-hosted
+  docker push "chumang/nango-self-hosted:$GIT_HASH"
+  docker push "chumang/nango-self-hosted:$VERSION"
+  docker push "chumang/nango-self-hosted:latest"
 else
   echo "Not pushing"
 fi
