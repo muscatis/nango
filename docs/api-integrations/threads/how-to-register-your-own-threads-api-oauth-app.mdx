@@ -1,0 +1,71 @@
+---
+title: 'Set up Threads with Nango'
+sidebarTitle: 'Threads Setup'
+description: 'Register an OAuth app with Threads and connect it to Nango'
+---
+
+This guide shows you how to register your own app with Threads to obtain your OAuth credentials (client id & secret). These are required to let your users grant your app access to their Threads account.
+
+## Access Requirements
+
+| Pre-Requisites | Status | Comment |
+| - | - | - |
+| Paid dev account | ✅ | Free Meta developer account required |
+| Paid test account | ❌ | Not required |
+| Partnership | ❌ | Not required |
+| App review | ✅ | Required to go live beyond test users |
+| Security audit | ❌ | Not required |
+
+## Registering Your App
+
+<Steps>
+  <Step title="Create a Meta developer account">
+    Go to [Meta for Developers](https://developers.facebook.com) and sign up for a developer account if you don't already have one.
+  </Step>
+  <Step title="Create a new app">
+    1. In the [Meta App Dashboard](https://developers.facebook.com/apps), click **Create App**
+    2. Select **Other** as the use case, then choose **Business** as the app type
+    3. Fill in your app name and contact email, then click **Create App**
+  </Step>
+  <Step title="Add the Threads API product">
+    1. On your app dashboard, scroll down to **Add products to your app**
+    2. Find **Threads API** and click **Set up**
+  </Step>
+  <Step title="Configure OAuth redirect URLs">
+    1. In the left sidebar, go to **Threads API** -> **Settings**
+    2. Under **Redirect Callback URLs**, add the Nango callback URL:
+       `https://api.nango.dev/oauth/callback`
+    3. Under **Deauthorize Callback URL** and **Delete Callback URL**, you may add your own endpoints or leave them blank for now
+    4. Click **Save changes**
+  </Step>
+  <Step title="Add test users">
+    1. Go to **Roles** -> **Roles** in the left sidebar
+    2. Under **Threads Testers**, click **Add Testers** and add the Instagram/Threads accounts you want to test with
+    3. Each tester must accept the invitation from their Threads account settings
+  </Step>
+  <Step title="Get your credentials">
+    1. In the left sidebar, go to **App settings** -> **Basic**
+    2. Copy your **App ID** (this is your Client ID) and **App Secret** (this is your Client Secret)
+
+    <Warning>The App Secret is sensitive. Never expose it in client-side code.</Warning>
+  </Step>
+  <Step title="Add credentials to Nango">
+    In your [Nango integration settings](https://app.nango.dev/dev/integrations):
+    1. Find your Threads integration
+    2. Enter your **App ID** as the Client ID and **App Secret** as the Client Secret
+    3. Configure the OAuth scopes your application needs (e.g. `threads_basic`, `threads_content_publish`, `threads_manage_insights`)
+    4. Save your settings
+  </Step>
+  <Step title="Submit for app review (production)">
+    To allow any Threads user (not just testers) to authorize your app, you must submit it for Meta app review. In your app dashboard, go to **App Review** -> **Requests** to request the necessary permissions.
+  </Step>
+  <Step title="Next">
+    Follow the [_Quickstart_](/getting-started/quickstart) to connect your first account.
+  </Step>
+</Steps>
+
+<Tip>Need help getting started? Get help in the [community](https://nango.dev/slack).</Tip>
+
+For more details, see the [Threads API documentation](https://developers.facebook.com/docs/threads) and the [Threads API getting started guide](https://developers.facebook.com/docs/threads/get-started).
+
+---

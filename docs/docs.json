@@ -1260,6 +1260,7 @@
               "api-integrations/slack-mcp",
               "api-integrations/tally",
               "api-integrations/telegram",
+              "api-integrations/threads",
               "api-integrations/timify",
               "api-integrations/toggl",
               "api-integrations/torii",

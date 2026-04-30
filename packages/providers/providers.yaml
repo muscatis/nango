@@ -18057,6 +18057,20 @@ thrivecart-oauth:
         base_url: https://thrivecart.com/api/external
     docs: https://nango.dev/docs/integrations/all/thrivecart-oauth
 
+threads:
+    display_name: Threads
+    categories:
+        - marketing
+        - social
+    auth_mode: OAUTH2
+    scope_separator: ','
+    authorization_url: https://threads.net/oauth/authorize
+    token_url: https://graph.threads.net/oauth/access_token
+    proxy:
+        base_url: https://graph.threads.com
+    docs: https://nango.dev/docs/api-integrations/threads
+    setup_guide_url: https://nango.dev/docs/api-integrations/threads/how-to-register-your-own-threads-api-oauth-app
+
 thrivecart-api-key:
     display_name: ThriveCart (API Key)
     categories:
